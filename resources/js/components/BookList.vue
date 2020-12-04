@@ -2,12 +2,16 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <search-books @add-book="addBook"></search-books>
 
-        <div class="flex flex-row-reverse">
+        <div class="flex flex-row-reverse items-center">
             <select class="mb-2" v-model="sort">
                 <option value="order">Reading Order</option>
                 <option value="title">Title</option>
                 <option value="author">Author</option>
             </select>
+
+            <div class="flex-1 text-sm">
+                Drag and drop the books to change the reading order.
+            </div>
         </div>
 
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -38,7 +42,7 @@
                                 <draggable tag="tbody" :disabled="sort !== 'order'" :value="books" group="books"
                                            @change="changeOrder">
                                     <!-- Odd row -->
-                                    <tr :class="index % 2 ? 'bg-gray-50' : 'bg-white'" v-for="(book, index) in books">
+                                    <tr :class="index % 2 ? 'bg-gray-50' : 'bg-white'" v-for="(book, index) in books" :key="books.volume_id">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {{ book.title }}
                                         </td>

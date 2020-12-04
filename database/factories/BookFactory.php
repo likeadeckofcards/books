@@ -22,7 +22,10 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'volume_id' => $this->faker->regexify('[a-zA-Z0-9]{12}'),
+            'title' => $this->faker->words($this->faker->numberBetween(1, 6), true),
+            'author' => $this->faker->name,
+            'published_on' => $this->faker->dateTimeBetween(),
         ];
     }
 }

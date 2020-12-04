@@ -47,6 +47,10 @@ class BookController extends Controller
      */
     public function store(Request $request, Client $client)
     {
+        $request->validate([
+            'volume_id' => 'alpha_dash|size:12'
+        ]);
+
         $book = Book::firstOrNew([
             'volume_id' => $request->volume_id,
         ], []);
@@ -100,6 +104,10 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $request->validate([
+            'newOrder' => 'numeric|min:1'
+        ]);
+
         $user = $request->user();
         $newOrder = $request->newOrder;
         $currentOrder = $user->books()->where('book_id', $book->id)->first()->pivot->order;

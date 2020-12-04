@@ -15,3 +15,4 @@ class Book extends Model
         'published_on'
     ];
 }
+
