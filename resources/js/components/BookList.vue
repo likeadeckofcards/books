@@ -50,7 +50,7 @@
                                             {{ book.author }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ book.published_on | moment }}
+                                            {{ book.published_on }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a :href="route('books.show', book.id)" class="text-indigo-600 hover:text-indigo-900">View</a>
